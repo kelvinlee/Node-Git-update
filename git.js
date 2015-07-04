@@ -12,6 +12,7 @@ function finished(logs) {
   pm2.connect(function(err){
     pm2.restart("all",function(err,proc){
       console.log("PM2 restart All.",logs);
+      pm2.disconnect(function() { process.exit(0) });
     })
   })
 }
