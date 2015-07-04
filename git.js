@@ -3,9 +3,17 @@ var url = require('url');
 var exec = require("child_process").exec;
 var port = 9998;
 var Gpath = "";
+
+var pm2 = require('pm2');
+
 function finished(logs) {
-  exec("pm2 restart all");
-  console.log("PM2 restart All.",logs);
+  // exec("pm2 restart all");
+  // console.log("PM2 restart All.",logs);
+  pm2.connect(function(err){
+    pm2.restart("all",function(err,proc){
+      console.log("PM2 restart All.",logs);
+    })
+  })
 }
 function gitpull(pathname) { 
   console.log("cd "+pathname+" && git pull");
