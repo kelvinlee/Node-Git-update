@@ -1,0 +1,9 @@
+{
+  "apps": [{
+    "name": "git-update",
+    "script": "src/git.js",
+    "env": {
+      "production": true
+    }
+  }]
+}
