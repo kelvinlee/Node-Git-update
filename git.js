@@ -14,10 +14,11 @@ function dockerRestart() {
 }
 function gitpull(pathname) { 
   console.log("cd "+pathname+" && git pull");
-  if pathname.indexOf("active") > 1
+  if (pathname.indexOf("active") > 1) {
     exec("cd "+pathname+" && git pull",dockerRestart);
-  else
+  }else{
     exec("cd "+pathname+" && git pull",finished);
+  }
   // exec("cd /my/demo/douban && git pull");
   return true;
 }
