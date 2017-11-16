@@ -9,12 +9,14 @@ function finished(logs) {
   console.log(logs);
 }
 function gitpull(pathname) { 
+  console.log("send post");
+  send.post("http://120.26.226.79:9998"+pathname);
+  send.post("http://120.55.126.223:9998"+pathname);
   console.log("cd "+pathname+" && git pull");
   exec("cd "+pathname+" && git pull",finished);
   // exec("cd /my/demo/douban && git pull");
   // send.post("http://47.96.29.129:9998"+pathname)
-  send.post("http://120.26.226.79:9998"+pathname)
-  send.post("http://120.55.126.223:9998"+pathname)
+  
   return true;
 }
 function routes(req,res) {
