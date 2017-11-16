@@ -8,9 +8,16 @@ var send = require('./send.js');
 function finished(logs) {
   console.log("success");
 }
+function dockerRestart() {
+  exec("docker restart active");
+  console.log("active restart")
+}
 function gitpull(pathname) { 
   console.log("cd "+pathname+" && git pull");
-  exec("cd "+pathname+" && git pull",finished);
+  if pathname.indexOf("active") > 1
+    exec("cd "+pathname+" && git pull",dockerRestart);
+  else
+    exec("cd "+pathname+" && git pull",finished);
   // exec("cd /my/demo/douban && git pull");
   return true;
 }
