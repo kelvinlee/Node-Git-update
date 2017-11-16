@@ -6,7 +6,7 @@ var Gpath = "";
 var send = require('./send.js');
 
 function finished(logs) {
-  console.log(logs);
+  console.log("success");
 }
 function gitpull(pathname) { 
   console.log("cd "+pathname+" && git pull");
