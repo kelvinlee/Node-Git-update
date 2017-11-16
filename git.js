@@ -9,13 +9,12 @@ function finished(logs) {
   console.log("success");
 }
 function dockerRestart() {
-  exec("docker restart active");
   console.log("active restart")
 }
 function gitpull(pathname) { 
   console.log("cd "+pathname+" && git pull");
   if (pathname.indexOf("active") > 1) {
-    exec("cd "+pathname+" && git pull",dockerRestart);
+    exec("cd "+pathname+" && git pull && docker restart active",dockerRestart);
   }else{
     exec("cd "+pathname+" && git pull",finished);
   }
