@@ -22,7 +22,7 @@ exports.post = function(_URL) {
     console.log("statusCode: ",res.statusCode);
     res.setEncoding('utf8');
     res.on('data',function(chunk){
-      console.log(chunk);
+      console.log(_URL+" post :"+chunk);
     });
   })
   post_req.write(post_data);
