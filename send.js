@@ -19,10 +19,10 @@ exports.post = function(_URL) {
   };
 
   let post_req = http.request(post_option,function(res){
-    console.log("statusCode: ",res.statusCode);
+    console.log(_URL+" post :",res.statusCode);
     res.setEncoding('utf8');
     res.on('data',function(chunk){
-      console.log(_URL+" post :"+chunk);
+      // console.log(chunk);
     });
   })
   post_req.write(post_data);
