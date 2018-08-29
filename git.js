@@ -16,7 +16,7 @@ function gitpull(pathname) {
   if (pathname.indexOf("active") > 1) {
     exec("cd "+pathname+" && git pull && docker restart active",dockerRestart);
   } else if (pathname.indexOf("giccoo-node") >= 1) {
-    exec("cd "+pathname+" && git pull && pm2 restart app",finished);
+    exec("cd "+pathname+" && git pull && docker restart giccoo-node",finished);
   }else{
     exec("cd "+pathname+" && git pull",finished);
   }
