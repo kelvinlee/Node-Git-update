@@ -14,15 +14,9 @@ function gitpull(pathname,req,res) {
   send.post("http://120.55.126.223:9998"+pathname);
   console.log(new Date().toLocaleDateString()+" "+new Date().toLocaleTimeString()+": cd "+pathname+" && git pull");
   exec("cd "+pathname+" && git pull && git rev-parse --short HEAD",function(err,logs){
-    body = "null";
-    if (logs.split("\n").length > 1) {
-      body = logs.split("\n")[1];
-    }
-    res.write();
+    res.write("success");
     res.end();
   });
-  // exec("cd /my/demo/douban && git pull");
-  // send.post("http://47.96.29.129:9998"+pathname)
   
   return true;
 }
