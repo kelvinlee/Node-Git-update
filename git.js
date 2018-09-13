@@ -28,13 +28,21 @@ function routes(req,res) {
   if (req.method.toLowerCase()=="post") { 
     gitpull(pathname);
     console.log("Run git command.");
+    res.end();
   }else{
+    exec("cd "+pathname+" && git rev-parse --short HEAD",function(err,logs){
+      if (logs) {
+        res.write(logs);
+      }else{
+        res.write("404");
+      }
+      res.end();
+    });
     return "404";
   }
 }
 var req = http.createServer(function(req,res){
   res.writeHead(200, {'Content-Type': 'text/plain'}); 
   routes(req,res);
-  res.end(); 
 }).listen(port);
 console.log("Node-Git-update start.");
