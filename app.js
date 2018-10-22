@@ -17,8 +17,6 @@ function gitpull(pathname,req,res) {
     res.write("success");
     res.end();
   });
-  
-  return true;
 }
 function getVersion(pathname) {
   return new Promise(function(success){
