@@ -41,7 +41,7 @@ function routes(req,res) {
       info = {
         "third": vals[0].replace("\n",""),
         "second": vals[1].replace("\n",""),
-        "ssd": vals[2].replace("\n","")
+        "ssd": vals[2].replace("\n",""),
         "US": vals[3].replace("\n","")
       }
       res.write(JSON.stringify(info));
