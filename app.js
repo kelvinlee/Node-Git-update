@@ -32,7 +32,11 @@ function routes(req,res) {
     gitpull(pathname,req,res);
     console.log("Run git command.");
   }else{
-    Promise.all([getVersion(pathname),GET.get("http://120.26.226.79:9998"+pathname),GET.get("http://120.55.126.223:9998"+pathname)],GET.get("http://47.254.18.2:9998"+pathname)])
+    Promise.all([
+      getVersion(pathname),
+      GET.get("http://120.26.226.79:9998"+pathname),
+      GET.get("http://120.55.126.223:9998"+pathname),
+      GET.get("http://47.254.18.2:9998"+pathname)])
     .then(function(vals){
       info = {
         "third": vals[0].replace("\n",""),
