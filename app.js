@@ -10,9 +10,9 @@ function finished(logs) {
   console.log("success");
 }
 function gitpull(pathname,req,res) {
-  send.post("http://120.26.226.79:9998"+pathname);
-  send.post("http://120.55.126.223:9998"+pathname);
-  send.post("http://47.254.18.2:9998"+pathname);
+//   send.post("http://120.26.226.79:9998"+pathname);
+  send.post("http://47.114.135.124:9998"+pathname);
+  send.post("http://47.96.29.129:9998"+pathname);
   console.log(new Date().toLocaleDateString()+" "+new Date().toLocaleTimeString()+": cd "+pathname+" && git pull");
   exec("cd "+pathname+" && git pull && git rev-parse --short HEAD",function(err,logs){
     res.write("success");
@@ -34,15 +34,15 @@ function routes(req,res) {
   }else{
     Promise.all([
       getVersion(pathname),
-      GET.get("http://120.26.226.79:9998"+pathname),
-      GET.get("http://120.55.126.223:9998"+pathname),
-      GET.get("http://47.254.18.2:9998"+pathname)])
+//       GET.get("http://120.26.226.79:9998"+pathname),
+      GET.get("http://47.114.135.124:9998"+pathname),
+      GET.get("http://47.96.29.129:9998"+pathname)])
     .then(function(vals){
       info = {
-        "third": vals[0].replace("\n",""),
-        "second": vals[1].replace("\n",""),
-        "ssd": vals[2].replace("\n",""),
-        "US": vals[3].replace("\n","")
+//         "third": vals[0].replace("\n",""),
+        "second": vals[0].replace("\n",""),
+        "ssd": vals[1].replace("\n",""),
+        "US": vals[2].replace("\n","")
       }
       res.write(JSON.stringify(info));
       res.end();
